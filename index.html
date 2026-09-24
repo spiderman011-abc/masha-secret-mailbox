@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"></main>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Masha's Secret Mailbox 🐻📬</title>
@@ -457,7 +457,40 @@
       </p>
 
     </main>
+<!-- SECRET LETTER POPUP -->
 
+<div class="letter-overlay" id="letterOverlay">
+
+  <div class="letter-box">
+
+    <button class="close-letter" id="closeLetter">×</button>
+
+    <div class="letter-icon">💌</div>
+
+    <h2>Write a Little Secret</h2>
+
+    <p class="letter-subtitle">
+      Leave something behind in the forest... 🌲
+    </p>
+
+    <input
+      type="text"
+      id="secretName"
+      placeholder="Who is this for?"
+    >
+
+    <textarea
+      id="secretMessage"
+      placeholder="Write your secret here..."
+    ></textarea>
+
+    <button class="deliver-button" id="deliverSecret">
+      📬 Put it in the mailbox
+    </button>
+
+  </div>
+
+</div>
   </div>
 
 </body>
