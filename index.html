@@ -381,6 +381,82 @@
         display: none;
       }
     }
+  .letter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(50, 70, 50, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.letter-overlay.active {
+  display: flex;
+}
+
+.letter-box {
+  position: relative;
+  width: min(450px, 100%);
+  background: #fff8e8;
+  border: 5px solid #e6b957;
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+}
+
+.close-letter {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  background: #e94f64;
+  color: white;
+  font-size: 22px;
+  box-shadow: none;
+}
+
+.letter-icon {
+  font-size: 50px;
+}
+
+.letter-box h2 {
+  color: #d94b62;
+  font-family: Georgia, serif;
+  margin: 8px 0;
+}
+
+.letter-subtitle {
+  margin-bottom: 20px;
+  color: #765542;
+}
+
+.letter-box input,
+.letter-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 2px solid #e6c982;
+  border-radius: 12px;
+  background: #fffdf5;
+  font-family: inherit;
+  outline: none;
+}
+
+.letter-box textarea {
+  height: 120px;
+  resize: none;
+}
+
+.deliver-button {
+  width: 100%;
+  background: #e94f64;
+  color: white;
+}
   </style>
 </head>
 
