@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Masha's Secret Mailbox 🐻📬</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Trebuchet MS", sans-serif;
+      background: #fff4dc;
+      color: #5b3a29;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* FOREST BACKGROUND */
+
+    .forest {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          to bottom,
+          #bde7d0 0%,
+          #dff4d8 45%,
+          #fff0c9 100%
+        );
+    }
+
+    .sun {
+      position: absolute;
+      top: 45px;
+      right: 10%;
+      width: 85px;
+      height: 85px;
+      background: #ffd86b;
+      border-radius: 50%;
+      box-shadow: 0 0 35px rgba(255, 216, 107, 0.6);
+    }
+
+    /* TREES */
+
+    .tree {
+      position: absolute;
+      bottom: 0;
+      width: 130px;
+      height: 260px;
+    }
+
+    .tree::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 57px;
+      width: 25px;
+      height: 120px;
+      background: #8b5a3c;
+      border-radius: 10px;
+    }
+
+    .tree::after {
+      content: "";
+      position: absolute;
+      bottom: 90px;
+      left: 5px;
+      width: 120px;
+      height: 120px;
+      background: #6da866;
+      border-radius: 50%;
+      box-shadow:
+        35px -45px 0 #78b66e,
+        70px 10px 0 #5f995e;
+    }
+
+    .tree1 {
+      left: -25px;
+      transform: scale(1.1);
+    }
+
+    .tree2 {
+      right: -30px;
+      transform: scale(1.25);
+    }
+
+    .tree3 {
+      left: 18%;
+      transform: scale(.7);
+      opacity: .7;
+    }
+
+    /* LITTLE CLOUDS */
+
+    .cloud {
+      position: absolute;
+      width: 100px;
+      height: 35px;
+      background: rgba(255,255,255,.75);
+      border-radius: 50px;
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: "";
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .cloud::before {
+      width: 45px;
+      height: 45px;
+      left: 15px;
+      bottom: 5px;
+    }
+
+    .cloud::after {
+      width: 55px;
+      height: 55px;
+      right: 10px;
+      bottom: 0;
+    }
+
+    .cloud1 {
+      top: 90px;
+      left: 12%;
+    }
+
+    .cloud2 {
+      top: 170px;
+      right: 18%;
+      transform: scale(.7);
+    }
+
+    /* MAIN CONTENT */
+
+    .content {
+      position: relative;
+      z-index: 5;
+      width: min(900px, 92%);
+      margin: auto;
+      padding: 70px 20px 150px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #fff;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      color: #d94b62;
+      box-shadow: 0 5px 15px rgba(0,0,0,.08);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 8vw, 76px);
+      color: #d94b62;
+      text-shadow: 3px 3px 0 #fff;
+      line-height: 1;
+    }
+
+    .subtitle {
+      margin-top: 18px;
+      font-size: 18px;
+      color: #654936;
+    }
+
+    /* BEAR + MAILBOX */
+
+    .scene {
+      margin: 45px auto 35px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 35px;
+    }
+
+    .bear {
+      font-size: 115px;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 8px 5px rgba(0,0,0,.12));
+    }
+
+    .mailbox {
+      position: relative;
+      width: 145px;
+      height: 115px;
+      background: #e94f64;
+      border-radius: 15px 15px 8px 8px;
+      box-shadow: 0 12px 20px rgba(0,0,0,.15);
+    }
+
+    .mailbox::before {
+      content: "";
+      position: absolute;
+      top: -45px;
+      left: 0;
+      width: 145px;
+      height: 75px;
+      background: #e94f64;
+      border-radius: 75px 75px 0 0;
+    }
+
+    .mailbox-door {
+      position: absolute;
+      right: -17px;
+      top: 38px;
+      width: 17px;
+      height: 55px;
+      background: #b9384d;
+      border-radius: 0 7px 7px 0;
+    }
+
+    .flag {
+      position: absolute;
+      right: 15px;
+      top: -45px;
+      width: 8px;
+      height: 65px;
+      background: #71452f;
+    }
+
+    .flag::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 23px;
+      background: #ffd15c;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+    }
+
+    .mail-label {
+      position: absolute;
+      left: 18px;
+      top: 35px;
+      width: 109px;
+      padding: 7px;
+      background: #fff2ce;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #7a4932;
+    }
+
+    /* BUTTONS */
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: inherit;
+      transition: .2s ease;
+      box-shadow: 0 6px 12px rgba(0,0,0,.12);
+    }
+
+    button:hover {
+      transform: translateY(-4px) rotate(-1deg);
+    }
+
+    .send {
+      background: #e94f64;
+      color: white;
+    }
+
+    .open {
+      background: #fff;
+      color: #d94b62;
+    }
+
+    .random {
+      background: #ffd15c;
+      color: #654936;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      margin-top: 45px;
+      font-size: 13px;
+      opacity: .75;
+    }
+
+    /* FLOATING HEARTS */
+
+    .heart {
+      position: absolute;
+      font-size: 25px;
+      animation: drift 6s linear infinite;
+      opacity: .7;
+    }
+
+    .heart1 {
+      left: 12%;
+      bottom: 25%;
+    }
+
+    .heart2 {
+      right: 15%;
+      bottom: 32%;
+      animation-delay: 2s;
+    }
+
+    .heart3 {
+      left: 70%;
+      bottom: 18%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      30% {
+        opacity: .7;
+      }
+      100% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .content {
+        padding-top: 50px;
+      }
+
+      .scene {
+        gap: 15px;
+      }
+
+      .bear {
+        font-size: 85px;
+      }
+
+      .mailbox {
+        transform: scale(.8);
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .tree3 {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="forest">
+
+    <div class="sun"></div>
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+
+    <div class="tree tree1"></div>
+    <div class="tree tree2"></div>
+    <div class="tree tree3"></div>
+
+    <div class="heart heart1">💗</div>
+    <div class="heart heart2">🌸</div>
+    <div class="heart heart3">💌</div>
+
+    <main class="content">
+
+      <div class="badge">
+        🌲 Welcome to the little forest
+      </div>
+
+      <h1>
+        Masha's<br>
+        Secret Mailbox
+      </h1>
+
+      <p class="subtitle">
+        Some secrets are easier to leave in a little mailbox. 💌
+      </p>
+
+      <div class="scene">
+
+        <div class="bear">
+          🧸
+        </div>
+
+        <div class="mailbox">
+
+          <div class="flag"></div>
+
+          <div class="mail-label">
+            SECRET MAIL 💌
+          </div>
+
+          <div class="mailbox-door"></div>
+
+        </div>
+
+      </div>
+
+      <div class="buttons">
+
+        <button class="send">
+          💌 Send a Secret
+        </button>
+
+        <button class="open">
+          📬 Open the Mailbox
+        </button>
+
+        <button class="random">
+          🎀 Random Letter
+        </button>
+
+      </div>
+
+      <p class="footer">
+        🐻 The Bear promises to keep your secrets safe.
+      </p>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
